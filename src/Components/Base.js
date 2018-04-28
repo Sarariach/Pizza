@@ -21,7 +21,7 @@ return (
 <RadioGroup 
 name= 'Base' 
 selectedValue={this.state.selectedValue}
-onChange={ this.handleChange } vertical>
+onChange={ this.handleChange } horizontal>
   <RadioButton value="  25cm NY Style € 8,99">
   25cm NY Style € 8,99
   </RadioButton>
