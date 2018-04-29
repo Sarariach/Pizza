@@ -1,5 +1,5 @@
-import {base} from '../Components/Classes'
+import {pizzaBase} from '../Components/Classes'
 
 export default {
-    base
+    pizzaBase
 }

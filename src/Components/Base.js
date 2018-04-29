@@ -2,7 +2,7 @@ import React, {PureComponent} from 'react'
 import PropTypes from 'prop-types'
 import { RadioGroup, RadioButton, ReversedRadioButton } from 'react-radio-buttons'
 import {connect} from 'react-redux'
-import {base} from './Classes'
+import {pizzaBase} from './Classes'
 import store from '../store'
 import {chooseBase} from '../actions/choose'
 
@@ -26,24 +26,29 @@ export class Base extends PureComponent{
   render(){
     return(
       <div>
-        <h2>Choose Your Base:</h2>
-        <form onSubmit={this.handleSubmit.bind(this)}>
-        <label>{base.id} {base.style} {base.price}</label>
-        <input type='radio' name='base' onSubmit={this.handleSubmit.bind(this)}/>
-
-        </form>
+        <h2>Choose Your Base:</h2> {
+        pizzaBase.map((pizzaBase) => {
+            return <p key={pizzaBase.id}>
+              <label>
+                {pizzaBase.name} {pizzaBase.style}  &euro; {pizzaBase.price}
+                <input type="radio" name="base" onChange={() => this.props.chooseBase(pizzaBase)}/>
+              </label>
+            </p>
+          })
+        }
+        
       </div>
-    )
+        )
   }
 }
   
-  const mapStateToProps = function (state, props) {
-    return {
-        bases: state.bases
-    }
-}
+//   const mapStateToProps = function (state, props) {
+//     return {
+//         bases: state.bases
+//     }
+// }
 
-export default connect(mapStateToProps, { chooseBase })(Base)
+export default connect( null, {chooseBase} )(Base)
     
 
 
