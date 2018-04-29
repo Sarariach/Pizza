@@ -1,40 +1,50 @@
 import React, {PureComponent} from 'react'
 import PropTypes from 'prop-types'
 import { RadioGroup, RadioButton, ReversedRadioButton } from 'react-radio-buttons'
+import {sauce} from './Classes'
+import {chooseSauce} from '../actions/choose'
+import store from '../store'
+import {connect} from 'react-redux'
+
+
 
 
 
 export class Sauce extends PureComponent{
     constructor(props) {
         super(props);
-                this.state = {
-                  radioState: true
-                }
+          this.state = {vale:''}
+        
+            this.handleChange = this.handleChange.bind(this);
+            this.handleSubmit = this.handleSubmit.bind(this);
               }
+    
+      handleChange(event){
+        this.setState({value:event.target.value})
+        store.dispatch(chooseSauce({value:event.target.value}))
+      }
+      handleSubmit= (event)=>{
+        event.preventDefault
+      }
 
-  
+        render(){
+          return(
+            <div>
+              <h2>Choose Your Sauce:</h2> {
+              sauce.map((sauce) => {
+                  return <p key={sauce.id}>
+                    <label>
+                      {sauce.name} {sauce.style}  &euro; {sauce.price}
+                      <input type="radio" name="sauce" onSubmit={() => this.props.chooseSauce(sauce)}/>
+                    </label>
+                  </p>
+                })
+              }
+              
+            </div>
+              )
+        }
+      }
 
-    render() {
-
-
-return (
-<RadioGroup 
-name= 'Sauce' 
-selectedValue={this.state.selectedValue}
-onChange={ this.handleChange } horizontal>
-  <RadioButton value="White sauce">
-  White sauce
-  </RadioButton>
-  <RadioButton value="Red sauce">
-  Red sauce
-  </RadioButton>
-  <RadioButton value=" Double red sauce € 1,00">
-  Double red sauce € 1,00
-  </RadioButton>
-  <RadioButton value="Mix it up € 1,50 ">
-  Mix it up € 1,50 
-  </RadioButton>
-</RadioGroup>
-
-)}
-}
+      export default connect( null, {chooseSauce} )(Sauce)
+ 

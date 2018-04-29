@@ -31,7 +31,7 @@ export class Base extends PureComponent{
             return <p key={pizzaBase.id}>
               <label>
                 {pizzaBase.name} {pizzaBase.style}  &euro; {pizzaBase.price}
-                <input type="radio" name="base" onChange={() => this.props.chooseBase(pizzaBase)}/>
+                <input type="radio" name="base" onSubmit={() => this.props.chooseBase(pizzaBase)}/>
               </label>
             </p>
           })
