@@ -2,6 +2,7 @@ export const CHOOSE_BASE = 'CHOOSE_BASE'
 export const CHOOSE_SAUCE= 'CHOOSE_SAUCE'
 export const CHOOSE_TOPPINGS= 'CHOOSE_TOPPINGS'
 export const CHOOSE_DRONE = "CHOOSE_DRONE"
+export const DELETE_TOPPING = 'DELETE_TOPPING'
 
 export const chooseBase =(base) =>{
     return{
@@ -28,5 +29,12 @@ export const chooseDrone =(drone) =>{
     return{
         type: CHOOSE_DRONE,
         payload:drone
+    }
+}
+
+export const deleteTopping =(topping) =>{
+    return{
+        type: DELETE_TOPPING,
+        payload:topping
     }
 }

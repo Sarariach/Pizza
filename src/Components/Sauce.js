@@ -46,5 +46,5 @@ export class Sauce extends PureComponent{
         }
       }
 
-      export default connect( null, {chooseSauce} )(Sauce)
+      export default connect(null, {chooseSauce} )(Sauce)
  
