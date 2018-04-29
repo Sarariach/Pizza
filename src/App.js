@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
-import {Sauce} from './Components/Sauce'
+import Sauce from './Components/Sauce'
 import Base from './Components/Base';
+import  Toppings from './Components/Toppings';
+import Drone from './Components/Drone';
 
 
 
@@ -11,7 +13,8 @@ class App extends Component {
        
         <Base />
         <Sauce />
-        
+        <Toppings />
+        <Drone />
         
       </div>
     );

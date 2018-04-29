@@ -1,9 +1,9 @@
-import {CHOOS_BASE} from '../actions/choose'
+import {CHOOSE_BASE} from '../actions/choose'
 
-export default function (state = [], action) {
+export default function (state = [], action ={}) {
     switch (action.type) {
       case CHOOSE_BASE:
-      return action.payload
+      return action.payload.value
       default:
         return state
     }

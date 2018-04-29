@@ -1,15 +1,11 @@
 import React, {PureComponent} from 'react'
 import PropTypes from 'prop-types'
 import { RadioGroup, RadioButton, ReversedRadioButton } from 'react-radio-buttons'
-import store from '../store'
-import {chooseToppings} from '../actions/choose'
 import {connect} from 'react-redux'
-import {toppings} from './Classes'
+import store from '../store'
+import {chooseDrone} from '../actions/choose'
 
-
-
-
-export class Toppings extends PureComponent{
+export class Drone extends PureComponent{
   constructor(props) {
       super(props);
         this.state = { value: ''};
@@ -20,7 +16,7 @@ export class Toppings extends PureComponent{
 
   handleChange(event){
     this.setState({value:event.target.value})
-    store.dispatch(chooseToppings({value:event.target.value}))
+    store.dispatch(chooseDrone({value:event.target.value}))
   }
   handleSubmit= (event)=>{
     event.preventDefault
@@ -29,15 +25,12 @@ export class Toppings extends PureComponent{
   render(){
     return(
       <div>
-        <h2>Choose a maximum of 3 Toppings:</h2> {
-        toppings.map((toppings) => {
-            return <p key={toppings.id}>
+        <h2>Choose turbo-drone-delivery which is an additional 10% on top of the total pizza price:</h2> {
               <label>
-                {toppings.name} {toppings.style}  &euro; {toppings.price}
-                <input type="checkbox" name="base" onSubmit={() => this.props.chooseToppings(toppings) ===3}/>
+                <input type="radio" name="base" onSubmit={() => this.props.chooseDrone(Drone)}/>
               </label>
-            </p>
-          })
+        
+          
         }
         
       </div>
@@ -47,5 +40,4 @@ export class Toppings extends PureComponent{
   
 
 
-export default connect( null, {chooseToppings} )(Toppings)
-    
+export default connect( null, {chooseDrone} )(Drone)
