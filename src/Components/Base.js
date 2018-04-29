@@ -3,7 +3,8 @@ import PropTypes from 'prop-types'
 import { RadioGroup, RadioButton, ReversedRadioButton } from 'react-radio-buttons'
 import {connect} from 'react-redux'
 import {base} from './Classes'
-import store from '.store'
+import store from '../store'
+import {chooseBase} from '../actions/choose'
 
 export class Base extends PureComponent{
   constructor(props) {
@@ -27,18 +28,26 @@ export class Base extends PureComponent{
       <div>
         <h2>Choose Your Base:</h2>
         <form onSubmit={this.handleSubmit.bind(this)}>
-        <label></label>
+        <label>{base.id} {base.style} {base.price}</label>
+        <input type='radio' name='base' onSubmit={this.handleSubmit.bind(this)}/>
 
         </form>
       </div>
     )
   }
+}
   
-  
+  const mapStateToProps = function (state, props) {
+    return {
+        bases: state.bases
+    }
+}
+
+export default connect(mapStateToProps, { chooseBase })(Base)
     
 
 
-{/* // return (
+/* // return (
 // <RadioGroup 
 // name= 'Base' 
 // selectedValue={this.state.selectedValue}
@@ -58,7 +67,7 @@ export class Base extends PureComponent{
 // </RadioGroup>
 
 // )}
-// } */}
+// } */
 
 
 
