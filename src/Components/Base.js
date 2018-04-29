@@ -1,43 +1,64 @@
 import React, {PureComponent} from 'react'
 import PropTypes from 'prop-types'
 import { RadioGroup, RadioButton, ReversedRadioButton } from 'react-radio-buttons'
-
-
+import {connect} from 'react-redux'
+import {base} from './Classes'
+import store from '.store'
 
 export class Base extends PureComponent{
-    constructor(props) {
-        super(props);
-                this.state = {
-                  radioState: true
-                }
-              }
+  constructor(props) {
+      super(props);
+        this.state = { value: ''};
+            
+        this.handleChange = this.handleChange.bind(this);
+        this.handleSubmit = this.handleSubmit.bind(this);
+          }
 
+  handleChange(event){
+    this.setState({value:event.target.value})
+    store.dispatch(chooseBase({value:event.target.value}))
+  }
+  handleSubmit= (event)=>{
+    event.preventDefault
+  }
   
+  render(){
+    return(
+      <div>
+        <h2>Choose Your Base:</h2>
+        <form onSubmit={this.handleSubmit.bind(this)}>
+        <label></label>
 
-    render() {
+        </form>
+      </div>
+    )
+  }
+  
+  
+    
 
 
-return (
-<RadioGroup 
-name= 'Base' 
-selectedValue={this.state.selectedValue}
-onChange={ this.handleChange } horizontal>
-  <RadioButton value="  25cm NY Style € 8,99">
-  25cm NY Style € 8,99
-  </RadioButton>
-  <RadioButton value="  30cm NY Style € 11,49">
-  30cm NY Style € 11,49
-  </RadioButton>
-  <RadioButton value="  35cm NY Style € 13,49">
-  35cm NY Style € 13,49
-  </RadioButton>
-  <RadioButton value="  20cm NY Style € 6,45">
-  20cm NY Style € 6,45
-  </RadioButton>
-</RadioGroup>
+{/* // return (
+// <RadioGroup 
+// name= 'Base' 
+// selectedValue={this.state.selectedValue}
+// onChange={ this.handleChange } horizontal>
+//   <RadioButton value={this.id}>
+//   25cm NY Style € 8,99
+//   </RadioButton>
+//   <RadioButton value="  30cm NY Style € 11,49">
+//   30cm NY Style € 11,49
+//   </RadioButton>
+//   <RadioButton value="  35cm NY Style € 13,49">
+//   35cm NY Style € 13,49
+//   </RadioButton>
+//   <RadioButton value="  20cm NY Style € 6,45">
+//   20cm NY Style € 6,45
+//   </RadioButton>
+// </RadioGroup>
 
-)}
-}
+// )}
+// } */}
 
 
 
@@ -46,12 +67,7 @@ onChange={ this.handleChange } horizontal>
 
 // export class Base extends PureComponent{
 
-//     constructor(props) {
-//         super(props);
-//         this.state = {
-//           checkboxState: true
-//         }
-//       }
+//     
 //     onSubmit(event) {
 //         event.preventDefault();
 //       }

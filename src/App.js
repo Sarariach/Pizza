@@ -1,8 +1,7 @@
 import React, { Component } from 'react';
 import './App.css';
 import {Sauce} from './Components/Sauce'
-import {Base} from './Components/Base';
-import {Toppings} from './Components/Toppings'
+import Base from './Components/Base';
 
 
 
@@ -14,15 +13,9 @@ class App extends Component {
          
           <h1 className="App-title">Welcome to NewAgePizza!</h1>
         </header>
-        <p className="App-intro">
+        <p className="App-intro"></p>
         <Base />
-        </p>
-        <p>
-        <Sauce />
-        </p> 
-        <p>
-          <Toppings />
-          </p>
+        
         
       </div>
     );
