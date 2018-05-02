@@ -1,8 +1,7 @@
 import React, { Component } from 'react';
-import Sauce from './Components/Sauce'
-import Base from './Components/Base';
-import  Toppings from './Components/Toppings';
-import Drone from './Components/Drone';
+import Pizza from './Container/Pizza'
+
+
 
 
 
@@ -11,10 +10,7 @@ class App extends Component {
     return (
       <div >
        
-        <Base />
-        <Sauce />
-        <Toppings />
-        <Drone />
+     <Pizza />
         
       </div>
     );

@@ -1,37 +1,43 @@
 import React, {PureComponent} from 'react'
-import PropTypes from 'prop-types'
-import { RadioGroup, RadioButton, ReversedRadioButton } from 'react-radio-buttons'
+//import PropTypes from 'prop-types'
+//import {RadioGroup, RadioButton, ReversedRadioButton} from 'react-radio-buttons'
 import {connect} from 'react-redux'
 import {pizzaBase} from './Classes'
-import store from '../store'
+// import store from '../store'
 import {chooseBase} from '../actions/choose'
 
-export class Base extends PureComponent{
+class Base extends PureComponent{
   constructor(props) {
       super(props);
-        this.state = { value: ''};
-            
+        this.state = {value:'id'};
+        // console.log(chooseBase(pizzaBase.id))
+
         this.handleChange = this.handleChange.bind(this);
-        this.handleSubmit = this.handleSubmit.bind(this);
+        // this.handleSubmit = this.handleSubmit.bind(this);
           }
 
   handleChange(event){
+    event.preventDefault();
+    //object with info from selection
     this.setState({value:event.target.value})
-    store.dispatch(chooseBase({value:event.target.value}))
+    // store.dispatch(chooseBase({value:event.target.value}))
   }
-  handleSubmit= (event)=>{
-    event.preventDefault
-  }
+  // handleSubmit= (event)=>{
+  //   event.preventDefault
+  // }
   
   render(){
+    // console.log(this.props)
     return(
+      
       <div>
+        
         <h2>Choose Your Base:</h2> {
         pizzaBase.map((pizzaBase) => {
             return <p key={pizzaBase.id}>
               <label>
                 {pizzaBase.name} {pizzaBase.style}  &euro; {pizzaBase.price}
-                <input type="radio" name="base" onSubmit={() => this.props.chooseBase(pizzaBase)}/>
+                <input type="radio" name="base" onChange={()=> this.props.chooseBase(pizzaBase)}/>
               </label>
             </p>
           })
@@ -40,98 +46,13 @@ export class Base extends PureComponent{
       </div>
         )
   }
-}
   
-//   const mapStateToProps = function (state, props) {
-//     return {
-//         bases: state.bases
-//     }
-// }
+}
+  const mapStateToProps = function (state, props) {
+    return {
+        bases: state.bases
+    }
+}
 
-export default connect( null, {chooseBase} )(Base)
-    
-
-
-/* // return (
-// <RadioGroup 
-// name= 'Base' 
-// selectedValue={this.state.selectedValue}
-// onChange={ this.handleChange } horizontal>
-//   <RadioButton value={this.id}>
-//   25cm NY Style € 8,99
-//   </RadioButton>
-//   <RadioButton value="  30cm NY Style € 11,49">
-//   30cm NY Style € 11,49
-//   </RadioButton>
-//   <RadioButton value="  35cm NY Style € 13,49">
-//   35cm NY Style € 13,49
-//   </RadioButton>
-//   <RadioButton value="  20cm NY Style € 6,45">
-//   20cm NY Style € 6,45
-//   </RadioButton>
-// </RadioGroup>
-
-// )}
-// } */
-
-
-
-
-
-
-// export class Base extends PureComponent{
-
-//     
-//     onSubmit(event) {
-//         event.preventDefault();
-//       }
-//     toggle(event) {
-//       this.setState({
-//         checkboxState: !this.state.checkboxState
-//       });
-//     }
-//     render() {
-//         const checkedOrNot = [];
-//         checkedOrNot.push(
-//           <p>{this.state.checkboxState ? 'Unchecked' : 'Checked'}</p>
-//         );
-//         const checkbox = (
-//           <span>
-//             <input 
-//             type="radio"
-//             onClick={this.toggle.bind(this)}
-//             />
-//             <label>1. 25cm NY Style € 8,99</label>
-//             <br />
-//             <input 
-//             type="radio"
-//             onClick={this.toggle.bind(this)}
-//             />
-//             <label>2. 30cm NY Style € 11,49</label>
-//             <br />
-//             <input 
-//             type="radio"
-//             onClick={this.toggle.bind(this)}
-//             />
-//             <label>3. 35cm NY Style € 13,49</label>
-//             <br />
-//             <input 
-//             type="radio"
-//             onClick={this.toggle.bind(this)}
-//             />
-//             <label>4. 20cm NY Style € 6,45</label>
-//           </span>
-//         );
-    
-//         return (
-//           <div>
-//             <form onSubmit={this.onSubmit.bind(this)}>
-//               {checkbox}
-//               <button type="submit">Submit</button>
-//             </form>
-//             {checkedOrNot}
-//           </div>
-//         );
-//       }
-//     }
+export default connect(mapStateToProps, {chooseBase} )(Base)
     

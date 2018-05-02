@@ -1,30 +1,36 @@
 import React, {PureComponent} from 'react'
-import PropTypes from 'prop-types'
-import { RadioGroup, RadioButton, ReversedRadioButton } from 'react-radio-buttons'
+//import PropTypes from 'prop-types'
+//import { RadioGroup, RadioButton, ReversedRadioButton } from 'react-radio-buttons'
 import store from '../store'
-import {chooseToppings} from '../actions/choose'
+import {chooseToppings, deleteTopping} from '../actions/choose'
 import {connect} from 'react-redux'
 import {toppings} from './Classes'
 
 
 
 
-export class Toppings extends PureComponent{
+class Toppings extends PureComponent{
   constructor(props) {
       super(props);
-        this.state = { value: ''};
+        this.state = { value: 'id'};
             
         this.handleChange = this.handleChange.bind(this);
-        this.handleSubmit = this.handleSubmit.bind(this);
+        // this.handleSubmit = this.handleSubmit.bind(this);
           }
 
-  handleChange(event){
-    this.setState({value:event.target.value})
-    store.dispatch(chooseToppings({value:event.target.value}))
-  }
-  handleSubmit= (event)=>{
-    event.preventDefault
-  }
+  handleChange= (event)=>{
+  event.preventDefault()
+          }
+
+  handleChangeToppings = (e) => {
+    if (e.target.checked) {
+      store.dispatch(chooseToppings(e.target.value))
+    } else {
+      store.dispatch(deleteTopping(e.target.value));
+    }
+    }
+    //store.dispatch(chooseToppings({value:event.target.value}))
+  
   
   render(){
     return(
@@ -34,7 +40,7 @@ export class Toppings extends PureComponent{
             return <p key={toppings.id}>
               <label>
                 {toppings.name} {toppings.style}  &euro; {toppings.price}
-                <input type="checkbox" name="base" onSubmit={() => this.props.chooseToppings(toppings) ===3}/>
+                <input type="checkbox" name="base" onChange={()=>this.props.chooseToppings(toppings)}/>
               </label>
             </p>
           })
@@ -45,7 +51,11 @@ export class Toppings extends PureComponent{
   }
 }
   
+const mapStateToProps = function (state, props) {
+  return {
+      bases: state.toppings
+  }
+}
 
-
-export default connect( null, {chooseToppings} )(Toppings)
+export default connect( mapStateToProps, {chooseToppings, deleteTopping})(Toppings)
     

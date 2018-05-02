@@ -1,31 +1,30 @@
 import React, {PureComponent} from 'react'
-import PropTypes from 'prop-types'
-import { RadioGroup, RadioButton, ReversedRadioButton } from 'react-radio-buttons'
+//import PropTypes from 'prop-types'
+//import { RadioGroup, RadioButton, ReversedRadioButton } from 'react-radio-buttons'
 import {sauce} from './Classes'
 import {chooseSauce} from '../actions/choose'
-import store from '../store'
+//import store from '../store'
 import {connect} from 'react-redux'
 
 
-
-
-
-export class Sauce extends PureComponent{
+class Sauce extends PureComponent{
     constructor(props) {
         super(props);
-          this.state = {vale:''}
+          this.state = {value:'id'}
         
             this.handleChange = this.handleChange.bind(this);
-            this.handleSubmit = this.handleSubmit.bind(this);
+            //this.handleSubmit = this.handleSubmit.bind(this);
               }
-    
+      
+      handleChange= (event)=>{
+      event.preventDefault()
+      }
+
       handleChange(event){
         this.setState({value:event.target.value})
-        store.dispatch(chooseSauce({value:event.target.value}))
+        //store.dispatch(chooseSauce({value:event.target.value}))
       }
-      handleSubmit= (event)=>{
-        event.preventDefault
-      }
+      
 
         render(){
           return(
@@ -35,7 +34,7 @@ export class Sauce extends PureComponent{
                   return <p key={sauce.id}>
                     <label>
                       {sauce.name} {sauce.style}  &euro; {sauce.price}
-                      <input type="radio" name="sauce" onSubmit={() => this.props.chooseSauce(sauce)}/>
+                      <input type="radio" name="sauce" onChange={() => this.props.chooseSauce(sauce)}/>
                     </label>
                   </p>
                 })
@@ -46,5 +45,10 @@ export class Sauce extends PureComponent{
         }
       }
 
-      export default connect(null, {chooseSauce} )(Sauce)
+      const mapStateToProps = function (state, props) {
+        return {
+            bases: state.sauce
+        }
+    }
+      export default connect(mapStateToProps, {chooseSauce} )(Sauce)
  

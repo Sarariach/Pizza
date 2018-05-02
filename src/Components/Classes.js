@@ -1,12 +1,12 @@
 
-export const pizzaBase = 
-    [
+export const pizzaBase = [
+    
    {id:1, style:"25cm NY Style", price: 8.99},
    {id:2, style:"30cm NY Style",price: 11.49},
    {id:3, style:"35cm NY Style",price: 13.49},
    {id:4, style:"20cm NY Style",price: 6.45}
-       
-    ]
+
+]
     
 
 

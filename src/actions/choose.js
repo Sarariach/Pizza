@@ -3,11 +3,13 @@ export const CHOOSE_SAUCE= 'CHOOSE_SAUCE'
 export const CHOOSE_TOPPINGS= 'CHOOSE_TOPPINGS'
 export const CHOOSE_DRONE = "CHOOSE_DRONE"
 export const DELETE_TOPPING = 'DELETE_TOPPING'
-
-export const chooseBase =(base) =>{
+// action: does something -- FUNCTION 
+// reducer: shows what has been done or the result of what has been done -- OBJECT
+export const chooseBase =(bases) =>{
     return{
+
         type: CHOOSE_BASE,
-        payload:base
+        payload:bases
     }
 }
 
