@@ -16,7 +16,7 @@ export default function (state = [], action) {
       
 
       case DELETE_TOPPING:
-      return state.splice(3,1)
+      return state.splice(1)
       default:
         return state
     }

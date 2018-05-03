@@ -29,17 +29,17 @@ class PizzaConfigurator extends PureComponent{
     // const sauce = this.props.sauce
     // const toppings = this.props.toppings
     // const drone = this.props.drone // needs to be true or false
-        let price = ''
-    if (this.props.toppings) {
-       // const toppingsPrice = this.props.toppings
-console.log(this.props.base.price,this.props.sauce.price,this.props.toppings)
-        price = 'Price: ' + (this.props.base.price + this.props.sauce.price + ((this.props.toppings).length * 0.5))
+        let price = 0
+    if (this.props.drone === true) {
+        price= (this.props.base.price + this.props.sauce.price + ((this.props.toppings).length * 0.5))+ ((this.props.base.price + this.props.sauce.price + (this.props.toppings).length * 0.5))*0.1   
+    }else if (this.props.toppings) {
+        price =  (this.props.base.price + this.props.sauce.price + ((this.props.toppings).length * 0.5))
     } else if (this.props.sauce.price) {
-        price = 'Price: ' + (this.props.base.price + this.props.sauce.price)
+        price = (this.props.base.price + this.props.sauce.price)
     } else if (this.props.base.price) {
-        price = 'Price: ' + this.props.base.price
+        price = this.props.base.price
     } else {
-        price = 'Price: '
+        price = 0
     }
 
     return(
