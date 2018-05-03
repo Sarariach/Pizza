@@ -20,11 +20,13 @@ export const chooseSauce =(sauce) =>{
     }
 }
 
-export const chooseToppings =(toppings) =>{
-    return{
+export const chooseToppings =(toppings) => (dispatch) => {
+    console.log(toppings)
+    const toppingsNumber = Number(toppings)
+    dispatch({
         type: CHOOSE_TOPPINGS,
-        payload:toppings
-    }
+        payload: toppingsNumber
+    })
 }
 
 export const chooseDrone =(drone) =>{
@@ -40,3 +42,7 @@ export const deleteTopping =(topping) =>{
         payload:topping
     }
 }
+
+// export const getPrice = (price) =>{
+
+// }

@@ -7,8 +7,19 @@ export const pizzaBase = [
    {id:4, style:"20cm NY Style",price: 6.45}
 
 ]
-    
+   // export const baseAndSauce = ((base, id) => {
+    //  arr.filter(base => {
+    //      if (base.id === pizzaBase.id)
+    //      return base.price
+    //     //if base.id matches given id, return base.price
+    //  })
+//filter over array of base/sauce and get the right one 
+// access price
+   // }
 
+   // const toppingsPrice = (arr) => {
+// multiply the length of the arr by 3
+   // }
 
 export const sauce= 
     [

@@ -22,31 +22,41 @@ class Toppings extends PureComponent{
   event.preventDefault()
           }
 
+          resetForm =(e) => {
+            e.nativeEvent.path[3].reset()
+          }
+
   handleChangeToppings = (e) => {
-    if (e.target.checked) {
+    console.log(e.nativeEvent.path)
+    
+    
+    if (e.target.checked === true) {
       store.dispatch(chooseToppings(e.target.value))
     } else {
       store.dispatch(deleteTopping(e.target.value));
     }
+    if (this.props.toppings === 3)
+    return       this.resetForm(e)
+
     }
     //store.dispatch(chooseToppings({value:event.target.value}))
   
   
   render(){
     return(
-      <div>
+      <form>
         <h2>Choose a maximum of 3 Toppings:</h2> {
         toppings.map((toppings) => {
             return <p key={toppings.id}>
               <label>
                 {toppings.name} {toppings.style}  &euro; {toppings.price}
-                <input type="checkbox" name="base" onChange={()=>this.props.chooseToppings(toppings)}/>
+                <input type="checkbox" name="base" value={toppings.price} onChange={(e)=>this.handleChangeToppings(e)}/>
               </label>
             </p>
           })
         }
         
-      </div>
+      </form>
         )
   }
 }

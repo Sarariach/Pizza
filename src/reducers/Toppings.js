@@ -2,7 +2,7 @@ import {CHOOSE_TOPPINGS} from '../actions/choose'
 import {DELETE_TOPPING} from '../actions/choose'
 //import {toppings} from '../Components/Classes'
 
-export default function (state = [], action={}) {
+export default function (state = [], action) {
     switch (action.type) {
       case CHOOSE_TOPPINGS:
         if (state.length < 3 ){
