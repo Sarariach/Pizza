@@ -35,7 +35,7 @@ class Toppings extends PureComponent{
     } else {
       store.dispatch(deleteTopping(e.target.value));
     }
-    if (this.props.toppings === 3)
+    if (this.props.bass === 3)
     return       this.resetForm(e)
 
     }

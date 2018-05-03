@@ -6,16 +6,17 @@ export default function (state = [], action) {
     switch (action.type) {
       case CHOOSE_TOPPINGS:
         if (state.length < 3 ){
+          console.log('hello',action.payload)
           return state.concat(action.payload)
-        } else {
+        } else if (state.includes(action.payload)){
           //window.alert('Max three toppings allowed')
-          return state
+          return state.splice(action.payload)
         }
       
       
 
       case DELETE_TOPPING:
-      return state.filter(topping => topping !== action.payload)
+      return state.splice(3,1)
       default:
         return state
     }
